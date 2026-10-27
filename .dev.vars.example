@@ -1,0 +1,7 @@
+# Local secrets for `npm run preview` (copy to .dev.vars). Same names as .env.example.
+NEXTJS_ENV=development
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=
+CONTACT_FROM_EMAIL=
+FORM_WEBHOOK_URL=
+TURNSTILE_SECRET_KEY=
