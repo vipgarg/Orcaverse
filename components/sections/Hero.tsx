@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { SplitText } from "@/components/motion/SplitText";
 import { HeroVisual } from "@/components/hero/HeroVisual";
+import { SloganRotator } from "@/components/motion/SloganRotator";
 
 export function Hero() {
   return (
@@ -12,9 +13,7 @@ export function Hero() {
 
       <div className="container-x grid min-h-[calc(100svh-var(--header-h))] items-center gap-10 py-12 lg:grid-cols-12 lg:gap-6 lg:py-16">
         <div className="lg:col-span-7">
-          <p className="eyebrow fade-up" style={{ ["--d" as string]: "0ms" }}>
-            Performance <span className="text-mist">•</span> Programmatic <span className="text-mist">•</span> App Growth
-          </p>
+          <SloganRotator />
           <h1 className="mt-6 text-[42px] font-semibold leading-[1.05] text-ice sm:text-[56px] lg:text-[72px] lg:leading-[1.02]">
             <SplitText text="Dominating Every Screen, App & Algorithm." accent="Algorithm" />
           </h1>

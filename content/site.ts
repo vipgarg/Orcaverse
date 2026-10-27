@@ -10,6 +10,9 @@ export const site = {
   name: "OrcaVerse",
   tagline: "Dominating Every Screen, App & Algorithm",
   supportingLine: "Acquire Smarter. Scale Further.",
+  slogan: "You name it, we have it.",
+  /** Words that rotate inside the hero slogan. Keep to services the agency offers. */
+  sloganWords: ["Meta Ads", "Google Ads", "Programmatic", "Mobile UA", "Quick Commerce", "OTT & CTV", "Attribution"],
   description:
     "OrcaVerse connects performance marketing, programmatic advertising, app growth, commerce media and measurement to support accountable digital growth.",
   positioning:
