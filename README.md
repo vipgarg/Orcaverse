@@ -1,6 +1,6 @@
 # OrcaVerse website
 
-**Live:** https://orcaverse.orcaverse-admin.workers.dev
+**Live:** https://orcaverse.in (also https://orcaverse.orcaverse-admin.workers.dev)
 
 Marketing site for OrcaVerse, built from the *OrcaVerse Premium Website Architecture* document.
 
@@ -54,14 +54,14 @@ The site runs on **Cloudflare Workers** through the [OpenNext Cloudflare adapter
    | Root directory | `/` |
 
 3. Under the build settings' **Variables**, add the build-time values. They are baked into the page at build time:
-   - `NEXT_PUBLIC_SITE_URL`: your live URL, e.g. `https://www.yourdomain.com`. If unset, the workers.dev URL from `.env.production` is used.
+   - `NEXT_PUBLIC_SITE_URL`: your live URL, e.g. `https://www.yourdomain.com`. If unset, `https://orcaverse.in` from `.env.production` is used.
    - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: only if you use Turnstile
 4. Click **Save and Deploy**. The first build takes a few minutes, then the site is live at `https://orcaverse.<your-subdomain>.workers.dev`.
 
 ### After the first deploy
 
 - **Form delivery:** in the Worker's **Settings → Variables and Secrets**, add `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` (and/or `FORM_WEBHOOK_URL`, `TURNSTILE_SECRET_KEY`) as **secrets**. Until then the live form shows an honest "not available" message.
-- **Custom domain:** in **Settings → Domains & Routes → Add → Custom domain**, enter your domain. It must be on Cloudflare DNS; SSL is automatic. Then update `NEXT_PUBLIC_SITE_URL` and redeploy.
+- **Custom domain:** in **Settings → Domains & Routes → Add → Custom domain**, add both `orcaverse.in` and `www.orcaverse.in`. The domain must be on Cloudflare DNS; SSL is automatic. `www` redirects to the bare domain (see `next.config.ts`).
 - **Every push** to the production branch redeploys. Pushes to other branches create preview versions.
 
 ### Deploying from your own machine (optional)
