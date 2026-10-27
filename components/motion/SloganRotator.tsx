@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
 
-const INTERVAL = 2000;
+const INTERVAL = 1000;
 
 /**
  * Hero slogan: "You name it — [rotating word] — we have it."
