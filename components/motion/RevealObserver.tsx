@@ -11,6 +11,7 @@ export function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
+    document.documentElement.classList.add("js", "reveal-ready");
     const els = document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-visible), [data-reveal-group]:not(.is-visible)");
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("is-visible"));

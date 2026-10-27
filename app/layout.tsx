@@ -28,8 +28,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Opt into scroll-reveal styles only when JS runs, so content is never hidden without it */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/*
+          Opt into scroll-reveal styles only when JS runs. If the app fails to
+          hydrate within 3s (blocked script, Rocket Loader, network error), drop
+          the class so sections that would have animated in stay visible.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(d){d.classList.add('js');setTimeout(function(){if(!d.classList.contains('reveal-ready'))d.classList.remove('js')},3000)})(document.documentElement)",
+          }}
+        />
       </head>
       <body>
         <Header />
