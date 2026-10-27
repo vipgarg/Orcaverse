@@ -1,5 +1,7 @@
 # OrcaVerse website
 
+**Live:** https://orcaverse.orcaverse-admin.workers.dev
+
 Marketing site for OrcaVerse, built from the *OrcaVerse Premium Website Architecture* document.
 
 **Stack:** Next.js 15 (App Router, static generation) on Cloudflare Workers · TypeScript · Tailwind CSS v4 · self-hosted fonts (Fontsource). No animation libraries: motion is CSS plus a small 2D-canvas particle hero.
@@ -52,7 +54,7 @@ The site runs on **Cloudflare Workers** through the [OpenNext Cloudflare adapter
    | Root directory | `/` |
 
 3. Under the build settings' **Variables**, add the build-time values. They are baked into the page at build time:
-   - `NEXT_PUBLIC_SITE_URL`: your live URL, e.g. `https://www.yourdomain.com`
+   - `NEXT_PUBLIC_SITE_URL`: your live URL, e.g. `https://www.yourdomain.com`. If unset, the workers.dev URL from `.env.production` is used.
    - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: only if you use Turnstile
 4. Click **Save and Deploy**. The first build takes a few minutes, then the site is live at `https://orcaverse.<your-subdomain>.workers.dev`.
 
