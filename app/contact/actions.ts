@@ -129,7 +129,13 @@ export async function submitEnquiry(_prev: EnquiryState, formData: FormData): Pr
       );
     }
     const results = await Promise.all(jobs);
-    if (results.some((r) => !r.ok)) throw new Error(`Delivery failed: ${results.map((r) => r.status).join(",")}`);
+    const failed = results.filter((r) => !r.ok);
+    if (failed.length) {
+      // Include the provider's reason (e.g. Resend "domain is not verified") in the Worker logs
+      const reasons = await Promise.all(failed.map(async (r) => `${r.url} ${r.status}: ${(await r.text()).slice(0, 300)}`));
+      throw new Error(`Delivery failed — ${reasons.join(" | ")}`);
+    }
+    console.info(`[enquiry] Delivered enquiry from ${data.company}`);
     return { status: "success" };
   } catch (err) {
     console.error("[enquiry]", err);
