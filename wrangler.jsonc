@@ -5,6 +5,8 @@
   "compatibility_date": "2026-09-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "workers_dev": true,
+  // Keep variables added in the Cloudflare dashboard when deploying from Git
+  "keep_vars": true,
   "preview_urls": true,
   "assets": {
     "directory": ".open-next/assets",

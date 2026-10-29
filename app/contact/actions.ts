@@ -95,7 +95,10 @@ export async function submitEnquiry(_prev: EnquiryState, formData: FormData): Pr
       console.info("[enquiry] Delivery not configured; logging instead:\n" + lines.map(([k, v]) => `${k}: ${v}`).join("\n"));
       return { status: "success" };
     }
-    console.error("[enquiry] No delivery configured (RESEND_* or FORM_WEBHOOK_URL).");
+    const missing = Object.entries({ RESEND_API_KEY: resendKey, CONTACT_TO_EMAIL: to, CONTACT_FROM_EMAIL: from })
+      .filter(([, v]) => !v)
+      .map(([k]) => k);
+    console.error(`[enquiry] No delivery configured. Missing: ${missing.join(", ")} (or set FORM_WEBHOOK_URL).`);
     return { status: "error", message: "Sorry, our enquiry form isn't available right now. Please try again later." };
   }
 
